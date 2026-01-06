@@ -24,7 +24,7 @@ Følgende environment variables skal være sat i Railway projektet:
    - Gå til [Railway Dashboard](https://railway.app)
    - Klik "New Project"
    - Vælg "Deploy from GitHub repo"
-   - Vælg dette repository
+   - Vælg repository: `eskoubar95/eskoubar-web`
 
 2. **Link Database:**
    - I Railway projektet, tilføj eksisterende PostgreSQL database service

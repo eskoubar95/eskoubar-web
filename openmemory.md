@@ -73,5 +73,10 @@ Personligt brand website for "eskoubar" (Nicklas Eskou) der kombinerer content m
 - **Domain:** eskoubar.com (available, setup pending)
 - **Documentation:** See `DEPLOYMENT.md` for detailed instructions
 
+### Repository
+- **GitHub:** https://github.com/eskoubar95/eskoubar-web
+- **Branch:** main
+- **Remote:** origin
+
 ## Notes
 
