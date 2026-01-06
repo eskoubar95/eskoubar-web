@@ -110,6 +110,23 @@ Personligt brand website for "eskoubar" (Nicklas Eskou) der kombinerer content m
 - **Layout Structure:** Root layout uses `min-h-screen flex flex-col` with `flex-1` on main content area for proper footer positioning
 - **Breakpoints:** Uses Tailwind defaults (sm: 640px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px)
 
+### Design System & Branding
+- **Style Direction:** Dark Glossy / Modern Professional (inspired by "Jonathan.ux" & "Daniel Sun")
+- **Font Family:** `Plus Jakarta Sans` (Geometric Sans-Serif)
+- **Color System (Dark Mode Native):**
+  - Background: `brand-neutral-950` (#050505 - Deep Black)
+  - Text: `white` (Headings) / `brand-neutral-400` (Body)
+  - Accents: Electric Blue/Purple via `brand-primary`
+  - Glass Effect: `white/10` borders and backgrounds
+- **UI Patterns:**
+  - **Glassmorphism:** Extensive use of `backdrop-blur`, semi-transparent backgrounds, and thin borders
+  - **Floating Navigation:** Fixed "pill" navigation centered at top (Daniel Sun style)
+  - **Rounding:** `rounded-full` for buttons/nav, `rounded-2xl` for cards
+  - **Utility Classes:** `.glass-panel` and `.glass-button` defined in globals.css
+- **Typography System:**
+  - Headings: Tight tracking (`tracking-tight`), bold weights, pure white
+  - Links: Underlined with offset, accent color on hover
+
 ### Repository
 - **GitHub:** https://github.com/eskoubar95/eskoubar-web
 - **Branch:** main
