@@ -25,8 +25,15 @@ This project uses Spec-Driven Development (SDD) with the Project Operating Syste
 
 ### Environment Variables
 
-- `PAYLOAD_SECRET` - Secret key til Payload CMS
+**Required:**
+- `PAYLOAD_SECRET` - Secret key til Payload CMS (generer en sikker random string)
 - `POSTGRES_URL` - Connection string til PostgreSQL database
+
+**Optional (for live preview):**
+- `PAYLOAD_PREVIEW_SECRET` - Secret token for preview authentication (defaults to 'preview-secret' in dev)
+- `NEXT_PUBLIC_SERVER_URL` - Public URL for preview generation (defaults to 'http://localhost:3000' in dev)
+
+**Other:**
 - `NODE_ENV` - Environment (development/production)
 
 ## Deployment

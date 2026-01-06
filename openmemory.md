@@ -74,13 +74,54 @@ Personligt brand website for "eskoubar" (Nicklas Eskou) der kombinerer content m
   - Responsive grid layout
 - **Integration:** Imported in `app/(app)/layout.tsx` and rendered on all pages via root layout
 
+### Blog Collection (Payload CMS)
+- **Location:** `collections/Blog.ts`
+- **Purpose:** Blog post content management with full SEO, OpenGraph, schema support, live preview, and version control
+- **Organization:** Fields organized with tabs for better UX:
+  - **Content Tab:** title, slug (auto-generated), content (lexical editor with full toolbar), excerpt, featuredImage
+  - **Organization Tab:** categories, tags, author
+  - **Publishing Tab:** publishedDate (status managed by versions.drafts)
+  - **Schema Tab:** schemaType (Article/BlogPosting), faqItems (FAQ schema for AI bots)
+- **Version Control & Publishing:**
+  - Versions enabled with drafts (autosave every 100ms for live preview)
+  - Scheduled publishing support
+  - Keeps last 50 versions per document
+  - Automatic _status field (draft/published) - no manual status field needed
+- **Live Preview:**
+  - Real-time preview in admin interface via iframe
+  - Preview route: `/api/preview` with secret token authentication
+  - Breakpoints: Mobile (375x667), Tablet (768x1024), Desktop (1280x720)
+  - Preview URL generation based on slug
+- **SEO:** Managed by @payloadcms/plugin-seo plugin (automatic SEO fields, preview, and OpenGraph support)
+- **Lexical Editor Features:** HeadingFeature (h1-h6), ParagraphFeature, BoldFeature, ItalicFeature, UnderlineFeature, StrikethroughFeature, InlineCodeFeature, LinkFeature, UnorderedListFeature, OrderedListFeature, BlockquoteFeature, HorizontalRuleFeature, AlignFeature
+- **Access Control:** Public users see only published posts, authenticated users see all (including drafts)
+- **Features:**
+  - Auto-generated slug from title
+  - Full rich text editor with toolbar (headings, formatting, lists, etc.)
+  - SEO plugin integration (meta title/description, OpenGraph, preview)
+  - FAQ schema support for AI bots (question/answer pairs)
+  - Draft/Published workflow with version control
+  - Live preview with responsive breakpoints
+  - Tab-based organization for better UX
+- **Integration:** Registered in `payload.config.ts`, accessible via admin interface at `/admin/collections/blog`
+
+### Categories Collection (Payload CMS)
+- **Location:** `collections/Categories.ts`
+- **Purpose:** Category taxonomy for organizing blog posts
+- **Fields:** name, slug (auto-generated), description
+- **Integration:** Referenced by Blog collection, registered in `payload.config.ts`
+
 ### Payload CMS
 - **Location:** `payload.config.ts`, `app/(payload)/`
 - **Purpose:** Headless CMS for content management (blog posts, case studies, etc.)
 - **Admin Interface:** `/admin` route
 - **API:** REST API at `/api/[...slug]`
 - **Database:** Railway PostgreSQL (connection configured, schema pulled successfully)
-- **Collections:** Users (auth enabled)
+- **Collections:** 
+  - Users (auth enabled)
+  - Media (file uploads with alt text)
+  - Categories (blog post categories)
+  - Blog (blog posts with full SEO, OpenGraph, and schema support)
 
 ## Patterns
 
@@ -90,8 +131,17 @@ Personligt brand website for "eskoubar" (Nicklas Eskou) der kombinerer content m
 - Admin interface at `app/(payload)/admin/[[...segments]]/page.tsx`
 - API routes at `app/(payload)/api/[...slug]/route.ts`
 - Layout wrapper using `RootLayout` from `@payloadcms/next/layouts`
-- Environment variables in `.env.local` (PAYLOAD_SECRET, POSTGRES_URL)
+- Environment variables in `.env.local`:
+  - `PAYLOAD_SECRET` - Secret key for Payload CMS
+  - `POSTGRES_URL` - PostgreSQL connection string
+  - `PAYLOAD_PREVIEW_SECRET` - Secret token for preview authentication
+  - `NEXT_PUBLIC_SERVER_URL` - Public URL for preview generation (defaults to http://localhost:3000)
 - Database adapter: `@payloadcms/db-postgres` (standard PostgreSQL adapter for Railway)
+- **Plugins:**
+  - `@payloadcms/plugin-seo`: SEO plugin for automatic meta tags, OpenGraph, and preview functionality
+- **Lexical Editor:** Configured with full feature set (headings, formatting, lists, links, etc.) for rich content editing
+- **Live Preview:** Configured with preview route (`/api/preview`) and responsive breakpoints
+- **Version Control:** Enabled with drafts, autosave, and scheduled publishing support
 
 ### Deployment
 - **Hosting:** Railway

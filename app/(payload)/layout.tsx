@@ -8,6 +8,7 @@ import React from 'react'
 
 import { importMap } from './admin/importMap.js'
 import './custom.scss'
+import { HydrationFix } from './HydrationFix'
 
 type Args = {
   children: React.ReactNode
@@ -23,7 +24,18 @@ const serverFunction: ServerFunctionClient = async function (args) {
 }
 
 const Layout = ({ children }: Args) => (
-  <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
+  <RootLayout 
+    config={config} 
+    importMap={importMap} 
+    serverFunction={serverFunction}
+    htmlProps={{
+      suppressHydrationWarning: true,
+    }}
+    bodyProps={{
+      suppressHydrationWarning: true,
+    }}
+  >
+    <HydrationFix />
     {children}
   </RootLayout>
 )
