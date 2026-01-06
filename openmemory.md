@@ -17,9 +17,20 @@ Personligt brand website for "eskoubar" (Nicklas Eskou) der kombinerer content m
 ```
 /
 ├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout
-│   ├── page.tsx           # Home page
-│   ├── globals.css        # Global styles with Tailwind
+│   ├── (app)/             # Main app routes
+│   │   ├── layout.tsx     # Root layout with Navigation
+│   │   ├── page.tsx       # Home page
+│   │   ├── globals.css    # Global styles with Tailwind
+│   │   ├── components/    # React components
+│   │   │   └── Navigation.tsx
+│   │   ├── blog/          # Blog routes
+│   │   │   └── page.tsx
+│   │   ├── about/         # About page
+│   │   │   └── page.tsx
+│   │   ├── services/      # Services page
+│   │   │   └── page.tsx
+│   │   └── contact/       # Contact page
+│   │       └── page.tsx
 │   └── (payload)/         # Payload CMS routes
 │       ├── layout.tsx      # Payload root layout
 │       ├── admin/          # Admin interface
@@ -45,6 +56,13 @@ Personligt brand website for "eskoubar" (Nicklas Eskou) der kombinerer content m
 - [Leave blank - user populates]
 
 ## Components
+
+### Navigation
+- **Location:** `app/(app)/components/Navigation.tsx`
+- **Purpose:** Main site navigation menu with links to Home, Blog, About, Services, Contact
+- **Features:** Responsive design with mobile hamburger menu, client-side component using Next.js Link
+- **Language:** English (default frontend language)
+- **Integration:** Imported in `app/(app)/layout.tsx` and rendered on all pages
 
 ### Payload CMS
 - **Location:** `payload.config.ts`, `app/(payload)/`
@@ -72,6 +90,25 @@ Personligt brand website for "eskoubar" (Nicklas Eskou) der kombinerer content m
 - **Environment Variables:** PAYLOAD_SECRET, POSTGRES_URL (set in Railway dashboard)
 - **Domain:** eskoubar.com (available, setup pending)
 - **Documentation:** See `DEPLOYMENT.md` for detailed instructions
+
+### Routing & Navigation
+- **Framework:** Next.js App Router (file-based routing)
+- **Navigation Component:** Client-side component with mobile responsive menu
+- **Routes:** Home (/), Blog (/blog), About (/about), Services (/services), Contact (/contact)
+- **Language:** English (default frontend language, `lang="en"` in HTML)
+- **Layout:** Navigation integrated in root layout, visible on all pages
+- **Mobile Menu:** Hamburger menu with toggle state, closes on link click
+
+### Responsive Layout System
+- **Container Pattern:** All pages use `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` for consistent container width and responsive padding
+- **Responsive Typography:** Global typography scales defined in `globals.css` using Tailwind's `@layer base`:
+  - h1: `text-3xl sm:text-4xl md:text-5xl lg:text-6xl`
+  - h2: `text-2xl sm:text-3xl md:text-4xl lg:text-5xl`
+  - h3-h6: Progressive scaling from mobile to desktop
+  - body: `text-base sm:text-base md:text-lg`
+- **Responsive Spacing:** Vertical padding uses `py-8 sm:py-12 lg:py-16` pattern for progressive spacing
+- **Layout Structure:** Root layout uses `min-h-screen flex flex-col` with `flex-1` on main content area for proper footer positioning
+- **Breakpoints:** Uses Tailwind defaults (sm: 640px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px)
 
 ### Repository
 - **GitHub:** https://github.com/eskoubar95/eskoubar-web

@@ -62,6 +62,23 @@ Når domain (eskoubar.com) skal sættes op:
 3. Følg Railway's DNS instruktioner
 4. Opdater DNS records hos domain provider
 
+### Known Warnings
+
+Følgende warnings kan ignoreres (ikke-kritiske):
+
+1. **Docker Security Warnings (Build):**
+   - `SecretsUsedInArgOrEnv: Do not use ARG or ENV instructions for sensitive data`
+   - `UndefinedVar: Usage of undefined variable '$NIXPACKS_PATH'`
+   - **Forklaring:** Disse kommer fra Railway's Nixpacks build system og kan ikke påvirkes af vores konfiguration. De er ikke kritiske.
+
+2. **npm Deprecation Warning:**
+   - `npm warn config production Use '--omit=dev' instead.`
+   - **Forklaring:** npm deprecation warning. Ikke kritisk, kommer fra build system.
+
+3. **Payload CMS Email Adapter Warning (Runtime):**
+   - `WARN: No email adapter provided. Email will be written to console.`
+   - **Forklaring:** Payload CMS advarer om manglende email adapter. Dette er forventet, da email ikke er konfigureret endnu. Email adapter kan tilføjes senere hvis nødvendigt (f.eks. for contact form notifications).
+
 ### Troubleshooting
 
 **Build fejler:**
@@ -78,4 +95,3 @@ Når domain (eskoubar.com) skal sættes op:
 - Verificer at database service er linket til projektet
 - Tjek at `POSTGRES_URL` er korrekt formateret
 - Verificer at database er aktiv i Railway
-

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navigation from "./components/Navigation";
 
 export const metadata: Metadata = {
 	title: "eskoubar - Nicklas Eskou",
@@ -12,8 +13,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="da">
-			<body>{children}</body>
+		<html lang="en">
+			<body suppressHydrationWarning className="min-h-screen flex flex-col">
+				<Navigation />
+				<main className="flex-1">
+					{children}
+				</main>
+			</body>
 		</html>
 	);
 }
