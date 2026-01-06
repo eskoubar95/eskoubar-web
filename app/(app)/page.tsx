@@ -1,17 +1,14 @@
 export default function Home() {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-center p-24">
+		<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
 			<div className="text-center">
-				<h1 className="text-4xl font-bold text-gray-900 mb-4">
+				<h1 className="font-bold text-gray-900 mb-4 sm:mb-6">
 					eskoubar
 				</h1>
-				<p className="text-lg text-gray-600">
-					Next.js + TypeScript + Tailwind CSS
-				</p>
-				<p className="text-sm text-gray-500 mt-4">
-					Development environment setup complete ✓
+				<p className="text-gray-600">
+					Website development, web applications, automation and digital business optimization
 				</p>
 			</div>
-		</main>
+		</div>
 	);
 }
