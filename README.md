@@ -50,12 +50,17 @@ Se [DEPLOYMENT.md](./DEPLOYMENT.md) for detaljerede deployment instruktioner.
 ```
 
 ## Project Structure
-
-- `spec/` - Source of truth (specifications)
-- `work/` - Execution artifacts (milestones, tasks)
-- `app/` - Next.js App Router pages og routes
-- `collections/` - Payload CMS collections
-- `.cursor/` - POS rules and commands
-
-For more information, see the POS documentation in `.cursor/rules/`.
+ 
+- `app/(app)/` — Root layout, home page og globale styles (`layout.tsx`, `page.tsx`, `globals.css`)
+- `app/(payload)/admin/[[...segments]]/` — Payload CMS admin route
+- `app/(payload)/api/[...slug]/route.ts` — Payload REST API forwarder
+- `app/(payload)/graphql/route.ts` — GraphQL endpoint
+- `app/(payload)/graphql-playground/route.ts` — GraphQL Playground
+- `collections/` — Payload CMS collections (`Users.ts`, `Media.ts`)
+- `payload.config.ts` — Payload CMS konfiguration
+- `spec/` — Specifikationer (SDD)
+- `work/` — Backlog og arbejdsartefakter
+- `railway.json` — Railway deploy konfiguration
+- `tailwind.config.ts`, `postcss.config.mjs`, `tsconfig.json`, `next.config.ts` — Build og tooling
+- `DEPLOYMENT.md`, `README.md` — Dokumentation
 
