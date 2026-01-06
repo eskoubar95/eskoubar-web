@@ -64,6 +64,16 @@ Personligt brand website for "eskoubar" (Nicklas Eskou) der kombinerer content m
 - **Language:** English (default frontend language)
 - **Integration:** Imported in `app/(app)/layout.tsx` and rendered on all pages
 
+### Footer
+- **Location:** `app/(app)/components/Footer.tsx`
+- **Purpose:** Site footer with legal links, social media links, and copyright
+- **Features:** 
+  - Glass panel design matching "Dark Glossy" theme
+  - Three-column layout (Brand, Legal, Social) on desktop, stacked on mobile
+  - Links to Privacy Policy, Terms of Service, and social media (GitHub, LinkedIn, Twitter)
+  - Responsive grid layout
+- **Integration:** Imported in `app/(app)/layout.tsx` and rendered on all pages via root layout
+
 ### Payload CMS
 - **Location:** `payload.config.ts`, `app/(payload)/`
 - **Purpose:** Headless CMS for content management (blog posts, case studies, etc.)
