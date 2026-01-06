@@ -19,34 +19,43 @@ export default function Navigation() {
 	];
 
 	return (
-		<nav className="bg-white shadow-sm border-b border-gray-200">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex justify-between items-center h-16">
-					{/* Logo/Brand */}
-					<Link href="/" className="text-xl font-bold text-gray-900">
-						eskoubar
-					</Link>
+		<nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+			<div className="glass-panel rounded-full px-6 py-3 flex items-center justify-between w-full max-w-5xl">
+				{/* Logo/Brand */}
+				<Link href="/" className="brand-logo text-lg mr-8">
+					eskoubar
+				</Link>
 
-					{/* Desktop Navigation */}
-					<div className="hidden md:flex md:space-x-8">
-						{navLinks.map((link) => (
-							<Link
-								key={link.href}
-								href={link.href}
-								className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors"
-							>
-								{link.label}
-							</Link>
-						))}
-					</div>
+				{/* Desktop Navigation */}
+				<div className="hidden md:flex md:space-x-8">
+					{navLinks.map((link) => (
+						<Link
+							key={link.href}
+							href={link.href}
+							className="text-brand-neutral-400 hover:text-white text-sm font-medium transition-colors no-underline"
+						>
+							{link.label}
+						</Link>
+					))}
+				</div>
 
-					{/* Mobile menu button */}
-					<button
-						onClick={toggleMobileMenu}
-						className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
-						aria-expanded="false"
-						aria-label="Toggle navigation menu"
+				{/* CTA Button (Desktop) */}
+				<div className="hidden md:block ml-8">
+					<Link
+						href="/contact"
+						className="glass-button px-5 py-2 rounded-full text-sm font-medium hover:bg-white hover:text-brand-neutral-950 border-white/20 no-underline"
 					>
+						Let's talk
+					</Link>
+				</div>
+
+				{/* Mobile menu button */}
+				<button
+					onClick={toggleMobileMenu}
+					className="md:hidden inline-flex items-center justify-center p-2 rounded-full text-brand-neutral-200 hover:text-white hover:bg-white/10 focus:outline-none"
+					aria-expanded="false"
+					aria-label="Toggle navigation menu"
+				>
 						{isMobileMenuOpen ? (
 							<svg
 								className="block h-6 w-6"
@@ -81,24 +90,23 @@ export default function Navigation() {
 					</button>
 				</div>
 
-				{/* Mobile Navigation */}
-				{isMobileMenuOpen && (
-					<div className="md:hidden">
-						<div className="px-2 pt-2 pb-3 space-y-1 border-t border-gray-200">
-							{navLinks.map((link) => (
-								<Link
-									key={link.href}
-									href={link.href}
-									onClick={() => setIsMobileMenuOpen(false)}
-									className="text-gray-700 hover:text-gray-900 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-								>
-									{link.label}
-								</Link>
-							))}
-						</div>
+			{/* Mobile Navigation Overlay */}
+			{isMobileMenuOpen && (
+				<div className="absolute top-full left-0 mt-2 w-full glass-panel rounded-2xl overflow-hidden md:hidden">
+					<div className="px-4 py-4 space-y-2">
+						{navLinks.map((link) => (
+							<Link
+								key={link.href}
+								href={link.href}
+								onClick={() => setIsMobileMenuOpen(false)}
+								className="text-brand-neutral-200 hover:text-white hover:bg-white/10 block px-4 py-3 rounded-xl text-base font-medium transition-colors no-underline"
+							>
+								{link.label}
+							</Link>
+						))}
 					</div>
-				)}
-			</div>
+				</div>
+			)}
 		</nav>
 	);
 }

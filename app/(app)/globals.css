@@ -3,32 +3,60 @@
 @tailwind utilities;
 
 @layer base {
-	/* Responsive Typography */
+	/* Typography System */
+	body {
+		@apply text-base sm:text-base md:text-lg text-brand-neutral-50 bg-brand-neutral-950 font-normal antialiased;
+	}
+
 	h1 {
-		@apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+		@apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight;
 	}
 
 	h2 {
-		@apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+		@apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight;
 	}
 
 	h3 {
-		@apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+		@apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white tracking-tight;
 	}
 
 	h4 {
-		@apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+		@apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-tight;
 	}
 
 	h5 {
-		@apply text-base sm:text-lg md:text-xl lg:text-2xl;
+		@apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-white tracking-tight;
 	}
 
 	h6 {
-		@apply text-sm sm:text-base md:text-lg lg:text-xl;
+		@apply text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-brand-neutral-200 tracking-tight;
 	}
 
-	body {
-		@apply text-base sm:text-base md:text-lg;
+	p {
+		@apply text-brand-neutral-400 leading-relaxed;
+	}
+
+	a {
+		@apply text-white hover:text-brand-primary-400 transition-colors underline decoration-brand-neutral-700 hover:decoration-brand-primary-400 underline-offset-4;
+	}
+}
+
+@layer components {
+	/* Brand Styling */
+	.brand-logo {
+		@apply text-xl font-bold text-white hover:text-brand-primary-400 transition-colors tracking-tight;
+	}
+
+	.brand-text {
+		@apply text-brand-primary-400;
+	}
+
+	/* Glassmorphism Utilities */
+	.glass-panel {
+		@apply bg-brand-neutral-900/50 backdrop-blur-md border border-white/10 shadow-xl;
+	}
+
+	.glass-button {
+		@apply bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 text-white transition-all duration-300;
 	}
 }
